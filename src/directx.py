@@ -85,7 +85,7 @@ def refresh_checkpoint():
         time.sleep(0.5)
 
     run(10)
-    logger.info("已重置进度")
+    logger.info("Progress Reset")
 
 
 def kick_boss_by_indebted_kindess():
@@ -94,7 +94,7 @@ def kick_boss_by_indebted_kindess():
     time.sleep(2)
 
     # 开启boss - Shoot boss
-    move(*monitor_settings.开boss鼠标偏移, relative=True)
+    move(*monitor_settings.bossOnScreenCoords, relative=True)
     time.sleep(0.5)
     leftClick()
     time.sleep(0.2)
@@ -102,37 +102,37 @@ def kick_boss_by_indebted_kindess():
     # 跳x隐身 - Shadowfall to go invis
     press("space")
     time.sleep(0.2)
-    press(base_settings.跳隐身按键)
+    press(base_settings.shadowdiveBind)
     time.sleep(1)
 
     # 移动到预设的位置 - Adjust location to shoot elite/yellowbar
-    press_and_hold_key("a", monitor_settings.隐身后往左走时间)
-    press_and_hold_key("w", monitor_settings.隐身后往前走时间)
+    press_and_hold_key("a", monitor_settings.leftRotationDuration)
+    press_and_hold_key("w", monitor_settings.postRotationDuration)
 
     # 射击黄血小怪 - Shoot the elite/yellowbar
     mouseDown(button=RIGHT)
     time.sleep(0.3)
-    move(*monitor_settings.射击黄血鼠标偏移, relative=True)
-    time.sleep(monitor_settings.等待黄血刷新时间)
+    move(*monitor_settings.adOnScreenCoord, relative=True)
+    time.sleep(monitor_settings.adSpawnWaitDuration)
     leftClick()
     mouseUp(button=RIGHT)
 
     # 终结小怪 - Use finisher on elite/yellowbar
-    keyDown(base_settings.终结技按键)
+    keyDown(base_settings.unchargedMeleeBind)
     run(1.7)
-    keyUp(base_settings.终结技按键)
+    keyUp(base_settings.unchargedMeleeBind)
 
 
 def hide_indebted_kindess():
     # Positioning for headclipping to de-aggro ads
-    move(*monitor_settings.躲藏第一段位移镜头偏移, relative=True)
+    move(*monitor_settings.cameraEmotePerpectiveOne, relative=True)
     keyDown("w")
     keyDown("shiftleft")
-    time.sleep(monitor_settings.躲藏第一段位移时间)
-    move(*monitor_settings.躲藏第二段位移镜头偏移, relative=True)
-    time.sleep(monitor_settings.躲藏第二段位移时间)
+    time.sleep(monitor_settings.persepectiveDurationOne)
+    move(*monitor_settings.cameraEmotePerpectiveTwo, relative=True)
+    time.sleep(monitor_settings.persepectiveDurationTwo)
     # Using the Anniversery Pose to de-aggro
     keyUp("shiftleft")
     keyUp("w")
     time.sleep(0.5)
-    press(base_settings.埋头表情按键)
+    press(base_settings.emoteBind)
