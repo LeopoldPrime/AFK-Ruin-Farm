@@ -32,10 +32,10 @@ def run():
     continuous_fail_count = 0
     need_refresh_checkpoint = False
 
-    logger.info("程序启动")
+    logger.info("Script Started")
 
     if base_settings.debug:
-        logger.info("已开启调试模式")
+        logger.info("Debug Mode Enabled")
         Path("./debug").mkdir(exist_ok=True)
 
     time.sleep(2)
@@ -44,12 +44,12 @@ def run():
         while True:
             x_similarity = get_x_similarity()
             if x_similarity > 0.9:
-                logger.info("检测到X技能准备就绪")
+                logger.info("Shadowdive Ready To Use")
                 break
             time.sleep(X_SIMILARITY_CHECK_INTERVAL)
 
         if continuous_fail_count >= 30:
-            logger.info("连续失败次数超过30次，重新进本")
+            logger.info("Script reached maximum failure threshold, please restart script")
             start_next_round()
             need_refresh_checkpoint = True
             continuous_fail_count = 0
@@ -72,17 +72,17 @@ def run():
 
         if not hp_bar_mask_ratio >= 0.8:
             continuous_fail_count += 1
-            logger.info("未在玩家血条上检测到感应护盾，准备团灭重试")
+            logger.info("Overshield not active, wiping to retry")
 
-            press(base_settings.职业技能按键)
+            press(base_settings.classAbilityBind)
             time.sleep(1.5)
-            press(base_settings.未充能近战按键)
+            press(base_settings.unchargedMeleeBind)
             time.sleep(10)
 
             continue
 
         finish_count += 1
-        logger.info("玩家血条蓝盾检测成功")
+        logger.info("Overshield activated successfully")
 
         start_time = time.monotonic()
 
@@ -93,9 +93,9 @@ def run():
         while True:
             if time.monotonic() - start_time >= 25:
                 continuous_fail_count += 1
-                logger.info("等待boss血条消失超时，准备团灭重试")
+                logger.info("Reached maximum waiting period for boss healthbar to disappear, wiping to retry")
 
-                press(base_settings.未充能近战按键)
+                press(base_settings.unchargedMeleeBind)
                 time.sleep(10)
 
                 break
@@ -104,7 +104,7 @@ def run():
 
             # 如果boss血条消失，进行玩家血条的检测
             if boss_hp_bar_mask_ratio <= 0.1:
-                logger.info("boss血条已消失")
+                logger.info("Boss healthbar has disappeared")
 
                 normal_hp_bar_mask_ratio = get_normal_hp_bar_mask_ratio()
 
@@ -113,7 +113,7 @@ def run():
                     success_count += 1
                     continuous_fail_count = 0
                     need_refresh_checkpoint = True
-                    logger.success("已检测到玩家的血条，本轮结算成功")
+                    logger.success("Player healthbar has been detected, boss has been defeated. Reloading dungeon")
 
                     time.sleep(2)
                     start_next_round()
@@ -121,7 +121,7 @@ def run():
                     break
                 # 如果没有检测到玩家血条，说明灭了
                 else:
-                    logger.info("未检测到玩家的血条，本轮团灭")
+                    logger.info("Player healthbar has not been detected, wiping to retry")
                     continuous_fail_count += 1
                     break
 
