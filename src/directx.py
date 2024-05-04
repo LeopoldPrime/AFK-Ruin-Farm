@@ -46,20 +46,20 @@ def run(secons: float):
 
 
 def open_map_and_switch_difficulty():
-    # 打开地图
+    # 打开地图 - Open map
     press("m")
     time.sleep(1)
 
-    # 点击战争领主的废墟
+    # 点击战争领主的废墟 - Select Warlord's Ruin
     moveTo(get_resize(2360))
     time.sleep(0.3)
     leftClick()
 
-    # 点开难度选择
+    # 点开难度选择 - Select Difficulty
     time.sleep(1.5)
     move_to_and_left_click(*get_resize(1960, 1110))
 
-    # 选择大师难度
+    # 选择大师难度 - Select Master Difficulty
     time.sleep(1.5)
     move_to_and_left_click(*get_resize(455, 460))
 
@@ -67,7 +67,7 @@ def open_map_and_switch_difficulty():
 def start_next_round():
     open_map_and_switch_difficulty()
 
-    # 点击开始
+    # 点击开始 - Start
     time.sleep(2)
     move_to_and_left_click(*get_resize(2180, 1210))
 
@@ -75,7 +75,7 @@ def start_next_round():
 def refresh_checkpoint():
     open_map_and_switch_difficulty()
 
-    # F进度
+    # F进度 - Reset Checkpoint
     moveTo(*get_resize(1805, 1115))
     time.sleep(1)
     press_and_hold_key("f", 4)
@@ -89,27 +89,27 @@ def refresh_checkpoint():
 
 
 def kick_boss_by_indebted_kindess():
-    # 切枪
+    # 切枪 - Switch to Indebted Kindness
     press("2")
     time.sleep(2)
 
-    # 开启boss
+    # 开启boss - Shoot boss
     move(*monitor_settings.开boss鼠标偏移, relative=True)
     time.sleep(0.5)
     leftClick()
     time.sleep(0.2)
 
-    # 跳x隐身
+    # 跳x隐身 - Shadowfall to go invis
     press("space")
     time.sleep(0.2)
     press(base_settings.跳隐身按键)
     time.sleep(1)
 
-    # 移动到预设的位置
+    # 移动到预设的位置 - Adjust location to shoot elite/yellowbar
     press_and_hold_key("a", monitor_settings.隐身后往左走时间)
     press_and_hold_key("w", monitor_settings.隐身后往前走时间)
 
-    # 射击黄血小怪
+    # 射击黄血小怪 - Shoot the elite/yellowbar
     mouseDown(button=RIGHT)
     time.sleep(0.3)
     move(*monitor_settings.射击黄血鼠标偏移, relative=True)
@@ -117,20 +117,21 @@ def kick_boss_by_indebted_kindess():
     leftClick()
     mouseUp(button=RIGHT)
 
-    # 终结小怪
+    # 终结小怪 - Use finisher on elite/yellowbar
     keyDown(base_settings.终结技按键)
     run(1.7)
     keyUp(base_settings.终结技按键)
 
 
 def hide_indebted_kindess():
+    # Positioning for headclipping to de-aggro ads
     move(*monitor_settings.躲藏第一段位移镜头偏移, relative=True)
     keyDown("w")
     keyDown("shiftleft")
     time.sleep(monitor_settings.躲藏第一段位移时间)
     move(*monitor_settings.躲藏第二段位移镜头偏移, relative=True)
     time.sleep(monitor_settings.躲藏第二段位移时间)
-
+    # Using the Anniversery Pose to de-aggro
     keyUp("shiftleft")
     keyUp("w")
     time.sleep(0.5)
