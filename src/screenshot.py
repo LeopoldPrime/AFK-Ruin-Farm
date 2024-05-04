@@ -39,7 +39,7 @@ def timer_log(func: callable):
         start_time = time.monotonic()
         result = func(*args, **kwargs)
 
-        logger.debug(f"[{func.__name__}] 耗时: {time.monotonic() - start_time:.3f}s")
+        logger.debug(f"[{func.__name__}] Run Duration: {time.monotonic() - start_time:.3f}s")
 
         return result
 
@@ -53,7 +53,7 @@ def result_log(func: callable):
     @wraps(func)
     def inner(*args, **kwargs):
         result = func(*args, **kwargs)
-        logger.debug(f"[{func.__name__}] 结果: {result:.3f}")
+        logger.debug(f"[{func.__name__}] Result: {result:.3f}")
         return result
 
     return inner
