@@ -1,35 +1,35 @@
 [base]
 log_level = "DEBUG"
 debug = false
-"职业技能按键" = "v"
-"未充能近战按键" = "c"
-"跳隐身按键" = "x"
-"终结技按键" = "g"
-"埋头表情按键" = "down" # 引号里可以填写up/right/down/left
+"classAbilityBind" = "v"
+"unchargedMeleeBind" = "c"
+"shadowdiveBind" = "x"
+"finisherBind" = "g"
+"emoteBind" = "down" # can be changed to whatever emote slot you want just change down to up/left/right
 
 
 [1440p]
-"开boss鼠标偏移" = [-42, -40]
-"隐身后往左走时间" = 0.5
-"隐身后往前走时间" = 1.83
+"bossOnScreenCoords" = [-42, -40] # on screen coords of boss
+"leftRotationDuration" = 0.5 # duration camera turns left after finisher
+"postRotationDuration" = 1.83 # duration to walk forward after camera turns left
 
-"射击黄血鼠标偏移" = [188, 72]
-"等待黄血刷新时间" = 5.805
+"adOnScreenCoord" = [188, 72] # coord of where to look to shoot ad for finisher
+"adSpawnWaitDuration" = 5.805 # how long to wait for ads to spawn
 
-"躲藏第一段位移镜头偏移" = [-850, 0]
-"躲藏第一段位移时间" = 1.8
+"躲藏第一段位移镜头偏移" = [-850, 0] # will translate later no clue what this is
+"躲藏第一段位移时间" = 1.8 # will translate later no clue what this is
 
-"躲藏第二段位移镜头偏移" = [250, 0]
-"躲藏第二段位移时间" = 3
+"躲藏第二段位移镜头偏移" = [250, 0] # will translate later no clue what this is
+"躲藏第二段位移时间" = 3 # will translate later no clue what this is
 
 
 [1080p]
-"开boss鼠标偏移" = [-42, -40]
-"隐身后往左走时间" = 0.5
-"隐身后往前走时间" = 1.83
+"bossOnScreenCoords" = [-42, -40]
+"leftRotationDuration" = 0.5
+"postRotationDuration" = 1.83
 
-"射击黄血鼠标偏移" = [188, 72]
-"等待黄血刷新时间" = 5.805
+"adOnScreenCoord" = [188, 72]
+"adSpawnWaitDuration" = 5.805
 
 "躲藏第一段位移镜头偏移" = [-850, 0]
 "躲藏第一段位移时间" = 1.8
