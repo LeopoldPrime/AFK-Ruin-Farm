@@ -16,11 +16,11 @@ debug = false
 "adOnScreenCoord" = [188, 72] # coord of where to look to shoot ad for finisher
 "adSpawnWaitDuration" = 5.805 # how long to wait for ads to spawn
 
-"躲藏第一段位移镜头偏移" = [-850, 0] # will translate later no clue what this is
-"躲藏第一段位移时间" = 1.8 # will translate later no clue what this is
+"cameraEmotePerpectiveOne" = [-850, 0] # where to aim for the emote to cut line of sight with ads
+"persepectiveDurationOne" = 1.8 # duration of where youre aiming
 
-"躲藏第二段位移镜头偏移" = [250, 0] # will translate later no clue what this is
-"躲藏第二段位移时间" = 3 # will translate later no clue what this is
+"cameraEmotePerpectiveTwo" = [250, 0] # where to aim for the emote to cut line of sight with ads
+"persepectiveDurationTwo" = 3 # duration of where youre aiming
 
 
 [1080p]
@@ -31,8 +31,8 @@ debug = false
 "adOnScreenCoord" = [188, 72]
 "adSpawnWaitDuration" = 5.805
 
-"躲藏第一段位移镜头偏移" = [-850, 0]
-"躲藏第一段位移时间" = 1.8
+"cameraEmotePerpectiveOne" = [-850, 0]
+"persepectiveDurationOne" = 1.8
 
-"躲藏第二段位移镜头偏移" = [250, 0]
-"躲藏第二段位移时间" = 3
+"cameraEmotePerpectiveTwo" = [250, 0]
+"persepectiveDurationTwo" = 3
