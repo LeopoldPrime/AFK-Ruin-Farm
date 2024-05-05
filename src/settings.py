@@ -4,7 +4,7 @@ import dataclasses
 from pathlib import Path
 from loguru import logger
 
-from size import MONITOR_HEIGHT
+from size import MONITOR_HEIGHT MONITOR_WIDTH
 
 SETTINGS_PATH = Path(f"./settings.toml")
 
